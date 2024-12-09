@@ -23,3 +23,14 @@ services:
       mode: replicated
       endpoint_mode:  dnsrr # vip
       replicas: 2
+
+  service1:
+    image: mcr.microsoft.com/dotnet/aspnet:8.0
+    volumes:
+      - ./service1/bin/Debug/net8.0:/app
+    working_dir: /app
+    command: ["dotnet", "service1.dll"] 
+    deploy:
+      mode: replicated
+      endpoint_mode:  dnsrr # vip
+      replicas: 3

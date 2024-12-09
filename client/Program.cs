@@ -1,11 +1,9 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using HttpClient client = new HttpClient();
+﻿using HttpClient client = new HttpClient();
 
 while (true)
 {
 
-    Console.WriteLine("I am the client. It is {0}", DateTime.UtcNow);
+    // Console.WriteLine("I am the client. It is {0}", DateTime.UtcNow);
 
     try
     {
@@ -16,7 +14,7 @@ while (true)
     }
     catch (HttpRequestException e)
     {
-        Console.WriteLine("API Gateway down. This is not what they call High Available: {0}", e.Message);
+        Console.WriteLine("Calling API Gateway Failed!: {0}", e.Message);
     }
 
     Thread.Sleep(1000);
