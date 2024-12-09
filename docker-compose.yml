@@ -1,0 +1,25 @@
+services:
+  client:
+    image: mcr.microsoft.com/dotnet/aspnet:9.0
+    container_name: client_container
+    ports:
+      - "5000:80"
+    volumes:
+     - ./client/bin/Debug/net9.0:/app
+
+    working_dir: /app
+    command: ["dotnet", "client.dll"]
+
+
+  apigateway:
+    image: mcr.microsoft.com/dotnet/aspnet:8.0
+    # ports:
+    #   - "5001:8080"
+    volumes:
+      - ./apigateway/bin/Debug/net8.0:/app
+    working_dir: /app
+    command: ["dotnet", "ApiGateway.dll"] 
+    deploy:
+      mode: replicated
+      endpoint_mode:  dnsrr # vip
+      replicas: 2
