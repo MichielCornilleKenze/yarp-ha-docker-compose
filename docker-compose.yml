@@ -13,8 +13,6 @@ services:
 
   apigateway:
     image: mcr.microsoft.com/dotnet/aspnet:8.0
-    # ports:
-    #   - "5001:8080"
     volumes:
       - ./apigateway/bin/Debug/net8.0:/app
     working_dir: /app
